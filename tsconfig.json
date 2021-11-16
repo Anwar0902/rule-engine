@@ -1,0 +1,53 @@
+// {
+//     "compilerOptions": {
+//       "module": "commonjs",
+//       "target": "es2017",
+//       "noImplicitAny": false,
+//       "strict": true,
+//       "outDir": "build",
+//       "esModuleInterop": true,
+//       "resolveJsonModule": true,
+//       "removeComments": false,
+//       "sourceMap": true,
+//     },
+//     "include": [
+//         "src/*"
+//     ],
+//     "exclude": [
+//         "node_modules",
+//         "**/*.spec.ts",
+//         ".vscode",
+//     ]
+// }
+
+
+{
+    "compilerOptions": {
+      "target": "es2017",
+      "module": "commonjs",
+      "noImplicitAny": false,
+      "outDir": "build",
+      "strict": true,
+      "baseUrl": "./",
+      "removeComments": false,
+      "sourceMap": true,
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "types": [
+        "node","express"
+      ],
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+    },
+      "include": [
+          "src/**/*"
+      ],
+      "exclude": [
+          "node_modules",
+          "**/*.spec.ts",
+          ".vscode",
+      ]
+}
+    
+  
