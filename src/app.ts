@@ -12,15 +12,6 @@ app.get('/', function(req, res) {
 });
 
 
-
-app.get('/rule', function(req, res) {
-        axios.post('https://hooks.slack.com/services/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', 
-        {text : `My name is anwar!!`}
-    ).then(() => res.send("Slack notification send successfully!!!")
-    ).catch(() => res.send("Slack notification Not send successfully!!!"))
-    
-});
-
 // app.listen(PORT, function() {
 //     console.log('Server is running on PORT:',PORT);
 // });
