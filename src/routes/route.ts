@@ -5,6 +5,6 @@ import RuleValidation from "../controllers/rule-validation/handler";
 
 const routes = new express.Router();
 
-routes.post("/", createRuleValidator(), validateRequest, RuleValidation.validate);
-
+// routes.post("/:memberlogin", createRuleValidator(), validateRequest, RuleValidation.create);
+routes.post("/validate", RuleValidation.validate);
 export default routes;

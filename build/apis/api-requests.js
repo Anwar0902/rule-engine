@@ -2,7 +2,6 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 // import { keyExist, logging } from './util';
 // import { ErrorCodes } from "../utils/errorCode";
 // import { Messages } from "../utils/message";
@@ -117,8 +116,5 @@ class ApiRequest {
         });
     }
 }
-// export default {
-//     apiRequest: (new ApiRequest()).apiRequest,
-// }
-exports.default = new ApiRequest();
+module.exports = ApiRequest;
 //# sourceMappingURL=api-requests.js.map

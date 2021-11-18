@@ -118,4 +118,5 @@ class ApiRequest {
 //     apiRequest: (new ApiRequest()).apiRequest,
 // }
 
-export default new ApiRequest();
+// export default new ApiRequest();
+export = ApiRequest;
