@@ -1,22 +1,50 @@
+import { json } from "express";
+import { body } from "express-validator";
+
 const ApiRequest = require("../apis/api-requests");
 const ApiRequest1 = new ApiRequest();
 
+export const generateRule = (rule, memberlogin) => {
+    const conditions = `(() => {
+        return \`${JSON.stringify(rule.conditions)}\`
+    })`;
+    
+    const events = `(() => {
+        return {
+            type : ${rule.name},
+            params: {
+                name: ${rule.name}
+            }
+        }
+    })`;
 
-class Util {
-    async getIpCountry(ip1) {
-        const ip = "127.0.0.1";
-        console.log(ip);
-        const ip_temp: any = ip.split(".");
-        const ip_num = ( 16777216 * ip_temp[0]) + ( 65536 * ip_temp[1]) + ( 256 * ip_temp[2] ) + parseInt(ip_temp[3]);
-        
-        const country_details = {};
-        const url = `http://back1.shaadi.com/v1/ip-country?beginning_ip_num=${ip_num}`
-        const response = await ApiRequest1.apiRequest("get", "Get", url, {});
-        country_details["country_code"] = response && response.data && response.data.iso_3166_country_code;
-        country_details["country_name"] = response && response.data && response.data.country_name;
-        console.log(country_details);
-        return country_details;
+    return {
+        name: rule.name,
+        type: rule.type,
+        weightage: rule.weightage,
+        precedence: rule.precedence,
+        description: rule.description || '',
+        facts: rule.facts,
+        additional_info: rule.additional_info || '',
+        current_version: 1,
+        created_by: memberlogin,
+        status: 'Active',
+        conditions,
+        events
     }
 }
 
-export = Util;
+export const getRecorddate = (date : Date) => {
+    const now = date ? date : new Date();
+    let year = "" + now.getFullYear();
+    let month = "" + padding(now.getMonth() + 1);
+    let day = "" + padding(now.getDate());
+    let hour = "" + padding(now.getHours());
+    let minute = "" + padding(now.getMinutes());
+    let second = "" + padding(now.getSeconds());
+    return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+}
+
+export const padding = (data) => {
+    return data > 10 ? data : "0" + data;
+}

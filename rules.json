@@ -1,0 +1,17 @@
+[
+    {
+        "name": "3WAY_COUNTRY_MISMATCH",
+        "type": "PROFILE_CREATION",
+        "weightage": 0.2,
+        "precedence": 100,
+        "description": "3WAY_COUNTRY_MISMATCH Rule",
+        "facts": [
+            "\n    (async function(params, almanac) {\n    \n\t\t        let data1 = await almanac.factValue(params.fact1);\n\t\t        let data2 = await almanac.factValue(params.fact2);\n\t\t        let data3 = await almanac.factValue(params.fact3);\n\t\t        let type = params.fact4\n\t\t        return (data1 == data2) && (data2 == data3);\n            })\n    "
+        ],
+        "additional_info": "",
+        "current_version": 1,
+        "status": "Active",
+        "conditions": "(() => {\n        return `{\"all\":[{\"fact\":\"IP_COUNTRY\",\"operator\":\"equal\",\"value\":true,\"params\":{\"fact1\":\"ip_country\",\"fact2\":\"ip_address\",\"fact4\":\"IP_COUNTRY\"}}]}`\n    })",
+        "events": "(() => {\n        return {\n            type : 3WAY_COUNTRY_MISMATCH,\n            params: {\n                name: 3WAY_COUNTRY_MISMATCH\n            }\n        }\n    })"
+    }
+]
